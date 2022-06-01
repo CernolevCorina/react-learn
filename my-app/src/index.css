@@ -102,3 +102,25 @@ div.clock {
 .dialogMessage {
     font-size: larger;
 }
+
+div.head,
+div.product {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+#productTable {
+    width: 400px;
+    border: 2px solid black;
+    margin: 20px;
+    padding: 20px;
+}
+
+div.products {
+    width: 200px;
+}
+
+div.category,
+div.head {
+    font-weight: bold;
+}
