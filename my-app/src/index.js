@@ -37,28 +37,19 @@ class Board extends React.Component {
             <Square 
                 value={this.props.squares[i]}
                 onClick={()=> this.props.onClick(i)}
+                key={i}
             />
         );
     }
   
     render() {
+        const squares = [];
+        for (let i = 0; i<this.props.row*this.props.col; i++) {
+            squares.push(this.renderSquare(i));
+        }
         return (
-            <div>
-                <div className="board-row">
-                    {this.renderSquare(0)}
-                    {this.renderSquare(1)}
-                    {this.renderSquare(2)}
-                </div>
-                <div className="board-row">
-                    {this.renderSquare(3)}
-                    {this.renderSquare(4)}
-                    {this.renderSquare(5)}
-                </div>
-                <div className="board-row">
-                    {this.renderSquare(6)}
-                    {this.renderSquare(7)}
-                    {this.renderSquare(8)}
-                </div>
+            <div style={{gridTemplateColumns: `repeat(${this.props.col}, 1fr)`}} id='gameBoard'>
+                {squares}
             </div>
         );
     }
@@ -69,7 +60,7 @@ class Game extends React.Component {
         super(props);
         this.state = {
             history: [{
-                squares: Array(9).fill(null),
+                squares: Array(this.props.row*this.props.col).fill(null),
             }],
             stepNumber: 0,
             xIsNext: true,
@@ -125,20 +116,84 @@ class Game extends React.Component {
 
         return (
             <div className="game">
+                <h1 className='gameName'>Tic-tac-toe</h1>
                 <div className="game-board">
                     <Board 
                         squares={current.squares}
                         onClick={(i) => this.handleClick(i)}
+                        row={this.props.row}
+                        col={this.props.col}
                     />
                 </div>
                 <div className="game-info">
                     <div>{status}</div>
                     <ol>{moves}</ol>
                 </div>
-            </div>           
+            </div>          
         );
     }
 }
+
+class Form extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {row: '', col:'', isSubmitted: false}
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleChange(event) {
+        this.setState({
+            [event.target.name]: event.target.value
+        })
+    }
+
+    handleSubmit(event) {
+        this.setState({isSubmitted: true})
+    }
+    
+    render() {
+        const isSubmitted = this.state.isSubmitted;
+
+        let content;
+        if (isSubmitted) {
+            content = <Game row={this.state.row} col={this.state.col}/>;
+        } else {
+            content = (
+                <div>
+                    <h1 className='gameName'>Tic-tac-toe</h1>
+                    <form onSubmit={this.handleSubmit}>
+                        <label>Rows: 
+                            <input 
+                                type='number'
+                                name='row'
+                                min='2'
+                                value={this.state.row || ''}
+                                onChange={this.handleChange}
+                            />
+                        </label>
+                        <label>Columns: 
+                            <input
+                                type='number'
+                                name='col'
+                                min='2'
+                                value={this.state.col || ''}
+                                onChange={this.handleChange}
+                            />
+                        </label>
+                        <input type='submit'/>
+                    </form>
+                </div>
+            );
+        }
+        return(
+            <div>
+                {content}
+            </div>
+        );
+    };
+}
+
 
 
 
@@ -601,9 +656,9 @@ class SignUpDialog extends React.Component {
 const Content = () => {
     return(
         <div>
+            <Form />
             <Page />
             <LoginControl />
-            <Game />
             <Clock />
             <Toggle />
             <NumberList numbers={numbers}/>

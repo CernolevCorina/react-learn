@@ -47,7 +47,15 @@ ol, ul {
   
 .game-info {
     margin-left: 20px;
-}  
+}
+
+#gameBoard {
+    display: grid;
+}
+
+.gameName {
+    display: block;
+}
 
 #size {
     margin: 20px;
@@ -74,6 +82,7 @@ div.clock {
     text-align: center;
     font-weight: bold;
     font-size: 30px;
+    margin-top: 20px;
 }
 
 .fancyBorder {
@@ -81,7 +90,7 @@ div.clock {
     border: 10px solid;
 }
   
-fancyBorderblue {
+.blue {
     border-color: blue;
 }
   
