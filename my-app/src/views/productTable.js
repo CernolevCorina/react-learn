@@ -1,6 +1,5 @@
 import products from '../products.json';
 import React from 'react';
-import ReactDOM from 'react-dom/client';
 
 class ProductCategoryRow extends React.Component {
     render() {

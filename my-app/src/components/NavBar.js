@@ -10,6 +10,7 @@ function render() {
             <Link to='/login'>Login</Link>
             <Link to='/lists'>Lists</Link>
             <Link to='/forms'>Forms</Link>
+            <Link to='/table'>Table</Link>
         </nav>
     );
 }

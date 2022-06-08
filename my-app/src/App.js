@@ -11,6 +11,7 @@ const Clock = lazy(() => import('./views/clock'))
 const LogIn = lazy(() => import('./views/logIn'))
 const Lists = lazy(() => import('./views/lists'))
 const Forms = lazy(() => import('./views/forms'))
+const Table = lazy(() => import('./views/table'))
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             <Route path='/login' element={<LogIn />}></Route>
             <Route path='/lists' element={<Lists/>}></Route>
             <Route path='/forms' element={<Forms/>}></Route>
+            <Route path='/table' element={<Table/>}></Route>
           </Route>
         </Routes>
       </BrowserRouter>
