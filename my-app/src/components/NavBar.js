@@ -11,6 +11,7 @@ function render() {
             <Link to='/lists'>Lists</Link>
             <Link to='/forms'>Forms</Link>
             <Link to='/table'>Table</Link>
+            <Link to='/errorBoundaries'>Error Bountaries</Link>
         </nav>
     );
 }

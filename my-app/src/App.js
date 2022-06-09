@@ -12,6 +12,7 @@ const LogIn = lazy(() => import('./views/logIn'))
 const Lists = lazy(() => import('./views/lists'))
 const Forms = lazy(() => import('./views/forms'))
 const Table = lazy(() => import('./views/table'))
+const ErrorBountaries = lazy(() => import('./views/ErrorBoundaries'))
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
             <Route path='/lists' element={<Lists/>}></Route>
             <Route path='/forms' element={<Forms/>}></Route>
             <Route path='/table' element={<Table/>}></Route>
+            <Route path='/errorBoundaries' element={<ErrorBountaries/>}></Route>
           </Route>
         </Routes>
       </BrowserRouter>
