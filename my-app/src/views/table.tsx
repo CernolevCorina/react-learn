@@ -9,14 +9,22 @@ import React from 'react';
 import axios from 'axios';
 import { LinearProgress } from '@mui/material';
 
+type Post = {
+    id: number,
+    title: string,
+}
+
+type MyState = {
+    posts: Post[],
+    loading: boolean,
+}
+
 export default class Products extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            posts: [],
-            loading: false
-        }
+    state: MyState = {
+        posts: [],
+        loading: false
     }
+
     async componentDidMount() {
         this.setState({ loading: true })
         try{

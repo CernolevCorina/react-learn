@@ -11,7 +11,7 @@ class ErrorBoundary extends React.Component {
         this.setState({
             error: error,
             errorInfo: errorInfo
-        })
+        });
     }
 
     render() {
@@ -50,7 +50,7 @@ class BuggyCounter extends React.Component {
             // Simulate a JS error
             throw new Error('I crashed!');
         }
-        return <h1 onClick={this.handleClick}>{this.state.counter}</h1>
+        return <h1 onClick={this.handleClick}>{this.state.counter}</h1>;
     }
 }
 
@@ -77,7 +77,7 @@ const App = () => {
             <ErrorBoundary><BuggyCounter/></ErrorBoundary>
             <ErrorBoundary><BuggyCounter/></ErrorBoundary>
         </div>
-    )
-}
+    );
+};
 
 export default App;
